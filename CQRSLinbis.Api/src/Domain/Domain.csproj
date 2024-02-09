@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <RootNamespace>CRUDCleanArchitecture.Domain</RootNamespace>
+        <AssemblyName>CRUDCleanArchitecture.Domain</AssemblyName>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Compile Remove="Enums\**" />
+      <EmbeddedResource Remove="Enums\**" />
+      <None Remove="Enums\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Constants\" />
+      <Folder Include="Entities\" />
+      <Folder Include="Events\" />
+      <Folder Include="Queries\" />
+    </ItemGroup>
+
+</Project>
