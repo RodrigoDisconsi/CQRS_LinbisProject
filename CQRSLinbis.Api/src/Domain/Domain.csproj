@@ -20,7 +20,6 @@
 
     <ItemGroup>
       <Folder Include="Constants\" />
-      <Folder Include="Entities\" />
       <Folder Include="Events\" />
       <Folder Include="Queries\" />
     </ItemGroup>

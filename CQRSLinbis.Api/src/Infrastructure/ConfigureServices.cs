@@ -16,7 +16,7 @@ public static class ConfigureServices
         if (configuration.GetValue<bool>("UseInMemoryDatabase"))
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseInMemoryDatabase("CRUDCleanArchitectureDb"));
+                options.UseInMemoryDatabase("CQRSLinbisDatabase"));
         }
         else
         {
@@ -25,9 +25,11 @@ public static class ConfigureServices
                       b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
         }
 
-        services.AddPersistenceDapper(configuration);
 
         services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<ApplicationDbContext>());
+
+        services.AddPersistenceDapper(configuration);
+        services.AddRepositories();
 
         services
             .AddDefaultIdentity<ApplicationUser>()
@@ -36,7 +38,6 @@ public static class ConfigureServices
 
         services.AddTransient<IIdentityService, IdentityService>();
 
-        services.AddRepositories();
 
         //services.AddIdentityServer()
         //    .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();

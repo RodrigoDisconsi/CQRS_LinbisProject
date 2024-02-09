@@ -2,6 +2,7 @@
 using CRUDCleanArchitecture.Application.Common.Interfaces;
 using System.Reflection;
 using MediatR;
+using CRUDCleanArchitecture.Domain.Entities;
 
 namespace CRUDCleanArchitecture.Infrastructure.Persistence;
 public class ApplicationDbContext : DbContext, IApplicationDbContext
@@ -14,8 +15,8 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
     {
         _mediator = mediator;
     }
-    //public virtual DbSet<Permiso> Permisos { get; set; }
-    //public virtual DbSet<TipoPermiso> TiposPermisos { get; set; }
+    public virtual DbSet<Project> Projects { get; set; }
+    public virtual DbSet<Developer> Developers { get; set; }
 
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
     {
@@ -26,6 +27,10 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
     protected override void OnModelCreating(ModelBuilder builder)
     {
         builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+        builder.Entity<Project>().HasData(
+            new Project() { Id = 1, Name = "Project 1", IsActive = true, EffortRequiredInDays = 30, AddedDate = DateTimeOffset.UtcNow },
+            new Project() { Id = 2, Name = "Project 2", IsActive = true, EffortRequiredInDays = 60, AddedDate = DateTimeOffset.UtcNow }
+            );
 
         base.OnModelCreating(builder);
     }
