@@ -2,8 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
-        <RootNamespace>CRUDCleanArchitecture.Domain</RootNamespace>
-        <AssemblyName>CRUDCleanArchitecture.Domain</AssemblyName>
+        <RootNamespace>CQRSLinbis.Domain</RootNamespace>
+        <AssemblyName>CQRSLinbis.Domain</AssemblyName>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
@@ -21,7 +21,6 @@
     <ItemGroup>
       <Folder Include="Constants\" />
       <Folder Include="Events\" />
-      <Folder Include="Queries\" />
     </ItemGroup>
 
 </Project>

@@ -1,14 +1,11 @@
-﻿using CQRSLinbis.Domain.Common;
-
-namespace CQRSLinbis.Domain.Entities
+﻿namespace CQRSLinbis.Domain.Queries
 {
-    public class Developer : HasDomainEvent
+    public class DeveloperView
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public int ProjectId { get; set; }
         public int CostByDay { get; set; }
         public DateTimeOffset AddedDate { get; set; }
-        public virtual Project Project { get; set; }
     }
 }

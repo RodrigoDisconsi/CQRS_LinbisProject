@@ -2,7 +2,7 @@
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 
-namespace CRUDCleanArchitecture.Application.Common.Models;
+namespace CQRSLinbis.Application.Common.Models;
 public class PaginatedList<T>
 {
     public List<T> Items { get; private set; }

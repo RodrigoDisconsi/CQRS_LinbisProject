@@ -1,6 +1,6 @@
 ﻿using FluentValidation.Results;
 
-namespace CRUDCleanArchitecture.Application.Common.Exceptions;
+namespace CQRSLinbis.Application.Common.Exceptions;
 public class ValidationException : Exception
 {
     public ValidationException()

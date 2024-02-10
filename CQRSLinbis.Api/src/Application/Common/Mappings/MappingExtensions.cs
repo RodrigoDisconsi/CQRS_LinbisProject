@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using CRUDCleanArchitecture.Application.Common.Models;
+using CQRSLinbis.Application.Common.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace CRUDCleanArchitecture.Application.Common.Mappings;
+namespace CQRSLinbis.Application.Common.Mappings;
 public static class MappingExtensions
 {
     public static Task<PaginatedList<TDestination>> PaginatedListAsync<TDestination>(this IQueryable<TDestination> queryable, int pageNumber, int pageSize) where TDestination : class

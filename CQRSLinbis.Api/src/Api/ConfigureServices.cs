@@ -1,9 +1,9 @@
 ﻿using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
-using CRUDCleanArchitecture.Infrastructure.Persistence;
+using CQRSLinbis.Infrastructure.Persistence;
 using API.Services;
 using API.Filters;
-using CRUDCleanArchitecture.Application.Common.Interfaces.Services;
+using CQRSLinbis.Application.Common.Interfaces.Services;
 
 namespace API;
 public static class ConfigureServices

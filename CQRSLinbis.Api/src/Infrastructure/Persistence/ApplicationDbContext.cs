@@ -1,10 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using CRUDCleanArchitecture.Application.Common.Interfaces;
+using CQRSLinbis.Application.Common.Interfaces;
 using System.Reflection;
 using MediatR;
-using CRUDCleanArchitecture.Domain.Entities;
+using CQRSLinbis.Domain.Entities;
+using CQRSLinbis.Application.Common.Models;
 
-namespace CRUDCleanArchitecture.Infrastructure.Persistence;
+namespace CQRSLinbis.Infrastructure.Persistence;
 public class ApplicationDbContext : DbContext, IApplicationDbContext
 {
     private readonly IMediator _mediator;

@@ -1,6 +1,6 @@
 using API;
-using CRUDCleanArchitecture.Application;
-using CRUDCleanArchitecture.Infrastructure.Persistence;
+using CQRSLinbis.Application;
+using CQRSLinbis.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

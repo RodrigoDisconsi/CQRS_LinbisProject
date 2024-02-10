@@ -1,4 +1,4 @@
-﻿namespace CRUDCleanArchitecture.Application.Common.Interfaces.Services;
+﻿namespace CQRSLinbis.Application.Common.Interfaces.Services;
 
 public interface ICurrentUserService
 {

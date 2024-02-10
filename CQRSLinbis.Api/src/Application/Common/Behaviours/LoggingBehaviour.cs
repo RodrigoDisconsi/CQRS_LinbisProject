@@ -1,8 +1,8 @@
-﻿using CRUDCleanArchitecture.Application.Common.Interfaces.Services;
+﻿using CQRSLinbis.Application.Common.Interfaces.Services;
 using MediatR.Pipeline;
 using Microsoft.Extensions.Logging;
 
-namespace CRUDCleanArchitecture.Application.Common.Behaviours;
+namespace CQRSLinbis.Application.Common.Behaviours;
 public class LoggingBehaviour<TRequest> : IRequestPreProcessor<TRequest> where TRequest : notnull
 {
     private readonly ILogger _logger;
@@ -27,7 +27,7 @@ public class LoggingBehaviour<TRequest> : IRequestPreProcessor<TRequest> where T
             userName = await _identityService.GetUserNameAsync(userId);
         }
 
-        _logger.LogInformation("CRUDCleanArchitecture Request: {Name} {@UserId} {@UserName} {@Request}",
+        _logger.LogInformation("CQRSLinbis Request: {Name} {@UserId} {@UserName} {@Request}",
             requestName, userId, userName, request);
     }
 }

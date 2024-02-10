@@ -1,10 +1,10 @@
-﻿using CRUDCleanArchitecture.Application.Common.Interfaces.Services;
-using CRUDCleanArchitecture.Application.Common.Models;
+﻿using CQRSLinbis.Application.Common.Interfaces.Services;
+using CQRSLinbis.Application.Common.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
-namespace CRUDCleanArchitecture.Infrastructure.Identity;
+namespace CQRSLinbis.Infrastructure.Identity;
 public class IdentityService : IIdentityService
 {
     private readonly UserManager<ApplicationUser> _userManager;

@@ -1,4 +1,4 @@
-﻿using CRUDCleanArchitecture.Domain.Common;
+﻿using CQRSLinbis.Domain.Common;
 using Microsoft.EntityFrameworkCore;
 
 namespace MediatR;

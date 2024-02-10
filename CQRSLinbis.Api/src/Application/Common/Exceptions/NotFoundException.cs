@@ -1,4 +1,4 @@
-﻿namespace CRUDCleanArchitecture.Application.Common.Exceptions;
+﻿namespace CQRSLinbis.Application.Common.Exceptions;
 
 public class NotFoundException : Exception
 {

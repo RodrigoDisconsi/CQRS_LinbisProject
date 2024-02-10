@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace CRUDCleanArchitecture.Domain.Common;
+namespace CQRSLinbis.Domain.Common;
 public abstract class BaseEvent : INotification
 {
 }

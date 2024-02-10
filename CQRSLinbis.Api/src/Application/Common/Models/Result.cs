@@ -1,4 +1,4 @@
-﻿namespace CRUDCleanArchitecture.Application.Common.Models;
+﻿namespace CQRSLinbis.Application.Common.Models;
 
 public class Result
 {

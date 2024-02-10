@@ -1,10 +1,10 @@
 ﻿using System.Reflection;
-using CRUDCleanArchitecture.Application.Common.Exceptions;
-using CRUDCleanArchitecture.Application.Common.Interfaces.Services;
-using CRUDCleanArchitecture.Application.Common.Security;
+using CQRSLinbis.Application.Common.Exceptions;
+using CQRSLinbis.Application.Common.Interfaces.Services;
+using CQRSLinbis.Application.Common.Security;
 using MediatR;
 
-namespace CRUDCleanArchitecture.Application.Common.Behaviours;
+namespace CQRSLinbis.Application.Common.Behaviours;
 public class AuthorizationBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
 {
     private readonly ICurrentUserService _currentUserService;

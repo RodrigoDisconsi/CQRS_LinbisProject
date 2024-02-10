@@ -1,8 +1,8 @@
 ﻿using FluentValidation;
 using MediatR;
-using ValidationException = CRUDCleanArchitecture.Application.Common.Exceptions.ValidationException;
+using ValidationException = CQRSLinbis.Application.Common.Exceptions.ValidationException;
 
-namespace CRUDCleanArchitecture.Application.Common.Behaviours;
+namespace CQRSLinbis.Application.Common.Behaviours;
 public class ValidationBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
      where TRequest : IRequest<TResponse>
 {

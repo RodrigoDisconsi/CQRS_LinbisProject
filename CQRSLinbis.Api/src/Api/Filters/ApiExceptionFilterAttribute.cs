@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using CRUDCleanArchitecture.Application.Common.Exceptions;
-using CRUDCleanArchitecture.Application.Common.Logs;
+using CQRSLinbis.Application.Common.Exceptions;
+using CQRSLinbis.Application.Common.Logs;
 using System.Text;
 
 

@@ -1,9 +1,9 @@
 ﻿using System.Diagnostics;
-using CRUDCleanArchitecture.Application.Common.Interfaces.Services;
+using CQRSLinbis.Application.Common.Interfaces.Services;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
-namespace CRUDCleanArchitecture.Application.Common.Behaviours;
+namespace CQRSLinbis.Application.Common.Behaviours;
 public class PerformanceBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
 {
     private readonly Stopwatch _timer;
@@ -44,7 +44,7 @@ public class PerformanceBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequ
                 userName = await _identityService.GetUserNameAsync(userId);
             }
 
-            _logger.LogWarning("CRUDCleanArchitecture Long Running Request: {Name} ({ElapsedMilliseconds} milliseconds) {@UserId} {@UserName} {@Request}",
+            _logger.LogWarning("CQRSLinbis Long Running Request: {Name} ({ElapsedMilliseconds} milliseconds) {@UserId} {@UserName} {@Request}",
                 requestName, elapsedMilliseconds, userId, userName, request);
         }
 

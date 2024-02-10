@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Text;
-using System.Threading.Tasks;
-using CRUDCleanArchitecture.Domain.Attributes;
-using CRUDCleanArchitecture.Domain.Exceptions;
+using CQRSLinbis.Domain.Attributes;
+using CQRSLinbis.Domain.Exceptions;
 
-namespace CRUDCleanArchitecture.Infrastructure.Extensions;
+namespace CQRSLinbis.Infrastructure.Extensions;
 public static class SercheableExtensions
 {
     /// <summary>

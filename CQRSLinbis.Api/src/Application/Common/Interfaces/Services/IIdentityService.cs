@@ -1,6 +1,6 @@
-﻿using CRUDCleanArchitecture.Application.Common.Models;
+﻿using CQRSLinbis.Application.Common.Models;
 
-namespace CRUDCleanArchitecture.Application.Common.Interfaces.Services;
+namespace CQRSLinbis.Application.Common.Interfaces.Services;
 public interface IIdentityService
 {
     Task<string?> GetUserNameAsync(string userId);

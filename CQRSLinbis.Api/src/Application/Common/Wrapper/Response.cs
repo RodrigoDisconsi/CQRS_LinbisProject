@@ -1,4 +1,4 @@
-﻿namespace CRUDCleanArchitecture.Application.Common.Wrapper;
+﻿namespace CQRSLinbis.Application.Common.Wrapper;
 public class Response : IResponse
 {
     public Response()

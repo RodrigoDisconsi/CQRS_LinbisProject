@@ -1,6 +1,6 @@
-﻿using CRUDCleanArchitecture.Domain.Common;
+﻿using CQRSLinbis.Domain.Common;
 
-namespace CRUDCleanArchitecture.Domain.Entities
+namespace CQRSLinbis.Domain.Entities
 {
     public class Project : HasDomainEvent
     {

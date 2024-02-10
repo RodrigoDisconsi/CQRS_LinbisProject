@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 
-namespace CRUDCleanArchitecture.Application.Common.Mappings;
+namespace CQRSLinbis.Application.Common.Mappings;
 public interface IMapFrom<T>
 {
     void Mapping(Profile profile) => profile.CreateMap(typeof(T), GetType());

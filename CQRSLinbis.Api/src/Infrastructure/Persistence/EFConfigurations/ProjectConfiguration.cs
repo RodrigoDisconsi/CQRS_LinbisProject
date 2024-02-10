@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
-using CRUDCleanArchitecture.Domain.Entities;
+using CQRSLinbis.Domain.Entities;
 
-namespace CRUDCleanArchitecture.Infrastructure.Persistence.EFConfigurations
+namespace CQRSLinbis.Infrastructure.Persistence.EFConfigurations
 {
     public class ProjectConfiguration : IEntityTypeConfiguration<Project>
     {

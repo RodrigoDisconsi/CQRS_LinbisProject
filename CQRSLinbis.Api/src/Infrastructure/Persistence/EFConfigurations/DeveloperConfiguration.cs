@@ -1,8 +1,8 @@
-﻿using CRUDCleanArchitecture.Domain.Entities;
+﻿using CQRSLinbis.Domain.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
 
-namespace CRUDCleanArchitecture.Infrastructure.Persistence.EFConfigurations
+namespace CQRSLinbis.Infrastructure.Persistence.EFConfigurations
 {
     public class DeveloperConfiguration : IEntityTypeConfiguration<Developer>
     {

@@ -1,12 +1,13 @@
-﻿using CRUDCleanArchitecture.Application.Common.Interfaces;
-using CRUDCleanArchitecture.Infrastructure.Identity;
-using CRUDCleanArchitecture.Infrastructure.Persistence;
-using CRUDCleanArchitecture.Infrastructure.Persistence.Dapper;
-using CRUDCleanArchitecture.Infrastructure.Repositories;
+﻿using CQRSLinbis.Application.Common.Interfaces;
+using CQRSLinbis.Infrastructure.Identity;
+using CQRSLinbis.Infrastructure.Persistence;
+using CQRSLinbis.Infrastructure.Persistence.Dapper;
+using CQRSLinbis.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using CRUDCleanArchitecture.Application.Common.Interfaces.Services;
+using CQRSLinbis.Application.Common.Interfaces.Services;
+using CQRSLinbis.Infrastructure.Services;
 
 namespace Microsoft.Extensions.DependencyInjection;
 public static class ConfigureServices
@@ -37,6 +38,8 @@ public static class ConfigureServices
             .AddEntityFrameworkStores<ApplicationDbContext>();
 
         services.AddTransient<IIdentityService, IdentityService>();
+
+        services.AddTransient<IProjectService, ProjectService>();
 
 
         //services.AddIdentityServer()

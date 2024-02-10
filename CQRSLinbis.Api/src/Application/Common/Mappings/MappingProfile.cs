@@ -1,7 +1,7 @@
 using System.Reflection;
 using AutoMapper;
 
-namespace CRUDCleanArchitecture.Application.Common.Mappings;
+namespace CQRSLinbis.Application.Common.Mappings;
 public class MappingProfile : Profile
 {
     public MappingProfile()

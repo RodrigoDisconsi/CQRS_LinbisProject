@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CRUDCleanArchitecture.Application.Common.Exceptions;
+using CQRSLinbis.Application.Common.Exceptions;
 
-namespace CRUDCleanArchitecture.Application.Common.Logs;
+namespace CQRSLinbis.Application.Common.Logs;
 public static class Log
 {
     public static string FormatError(this Exception exception, string headingInfo = "Error")

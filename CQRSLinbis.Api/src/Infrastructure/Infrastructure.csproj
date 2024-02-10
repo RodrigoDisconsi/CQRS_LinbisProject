@@ -2,8 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
-        <RootNamespace>CRUDCleanArchitecture.Infrastructure</RootNamespace>
-        <AssemblyName>CRUDCleanArchitecture.Infrastructure</AssemblyName>
+        <RootNamespace>CQRSLinbis.Infrastructure</RootNamespace>
+        <AssemblyName>CQRSLinbis.Infrastructure</AssemblyName>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
@@ -24,10 +24,6 @@
 
     <ItemGroup>
         <ProjectReference Include="..\Application\Application.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Services\" />
     </ItemGroup>
 
 </Project>

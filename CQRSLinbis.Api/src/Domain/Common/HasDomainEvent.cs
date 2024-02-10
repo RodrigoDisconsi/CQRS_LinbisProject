@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace CRUDCleanArchitecture.Domain.Common;
+namespace CQRSLinbis.Domain.Common;
 public abstract class HasDomainEvent
 {
     private readonly List<BaseEvent> _domainEvents = new();

@@ -2,8 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
-        <RootNamespace>CRUDCleanArchitecture.Application</RootNamespace>
-        <AssemblyName>CRUDCleanArchitecture.Application</AssemblyName>
+        <RootNamespace>CQRSLinbis.Application</RootNamespace>
+        <AssemblyName>CQRSLinbis.Application</AssemblyName>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>

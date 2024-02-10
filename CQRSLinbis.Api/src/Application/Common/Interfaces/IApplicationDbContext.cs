@@ -1,7 +1,8 @@
-﻿using CRUDCleanArchitecture.Domain.Entities;
+﻿using CQRSLinbis.Application.Common.Models;
+using CQRSLinbis.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace CRUDCleanArchitecture.Application.Common.Interfaces;
+namespace CQRSLinbis.Application.Common.Interfaces;
 public interface IApplicationDbContext
 {
     DbSet<Project> Projects { get; set; }

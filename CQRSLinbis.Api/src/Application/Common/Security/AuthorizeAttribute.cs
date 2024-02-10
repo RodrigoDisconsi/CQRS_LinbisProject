@@ -1,4 +1,4 @@
-﻿namespace CRUDCleanArchitecture.Application.Common.Security;
+﻿namespace CQRSLinbis.Application.Common.Security;
 
 /// <summary>
 /// Specifies the class this attribute is applied to requires authorization.

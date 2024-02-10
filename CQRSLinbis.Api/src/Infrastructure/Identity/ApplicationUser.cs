@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace CRUDCleanArchitecture.Infrastructure.Identity;
+namespace CQRSLinbis.Infrastructure.Identity;
 public class ApplicationUser : IdentityUser
 {
 }

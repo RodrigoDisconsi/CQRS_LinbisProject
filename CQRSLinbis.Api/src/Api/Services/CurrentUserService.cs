@@ -1,4 +1,4 @@
-﻿using CRUDCleanArchitecture.Application.Common.Interfaces.Services;
+﻿using CQRSLinbis.Application.Common.Interfaces.Services;
 using System.Security.Claims;
 
 namespace API.Services;

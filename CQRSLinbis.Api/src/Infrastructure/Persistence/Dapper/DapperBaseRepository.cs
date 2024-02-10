@@ -1,7 +1,7 @@
 ﻿using Dapper;
 using System.Data;
 
-namespace CRUDCleanArchitecture.Infrastructure.Persistence.Dapper;
+namespace CQRSLinbis.Infrastructure.Persistence.Dapper;
 public class DapperBaseRepository
 {
     private readonly IDbConnection _connection;

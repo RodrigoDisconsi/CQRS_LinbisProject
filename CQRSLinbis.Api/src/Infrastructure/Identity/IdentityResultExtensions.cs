@@ -1,7 +1,7 @@
-﻿using CRUDCleanArchitecture.Application.Common.Models;
+﻿using CQRSLinbis.Application.Common.Models;
 using Microsoft.AspNetCore.Identity;
 
-namespace CRUDCleanArchitecture.Infrastructure.Identity;
+namespace CQRSLinbis.Infrastructure.Identity;
 public static class IdentityResultExtensions
 {
     public static Result ToApplicationResult(this IdentityResult result)

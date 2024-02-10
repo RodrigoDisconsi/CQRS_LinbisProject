@@ -1,10 +1,10 @@
 ﻿using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using CRUDCleanArchitecture.Application.Common.Behaviours;
+using CQRSLinbis.Application.Common.Behaviours;
 using System.Reflection;
 
-namespace CRUDCleanArchitecture.Application;
+namespace CQRSLinbis.Application;
 public static class ConfigureServices
 {
     public static IServiceCollection AddApplication(this IServiceCollection services)

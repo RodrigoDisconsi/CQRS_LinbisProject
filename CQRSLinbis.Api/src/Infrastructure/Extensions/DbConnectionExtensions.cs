@@ -1,8 +1,8 @@
 ﻿using Dapper;
-using CRUDCleanArchitecture.Application.Common.Models;
+using CQRSLinbis.Application.Common.Models;
 using System.Data;
 
-namespace CRUDCleanArchitecture.Infrastructure.Extensions;
+namespace CQRSLinbis.Infrastructure.Extensions;
 public static class DbConnectionExtensions
 {
     public static async Task<PaginatedList<T>?> PaginatedListAsync<T>(this IDbConnection conn,
