@@ -109,7 +109,7 @@ public class ApiExceptionFilterAttribute : ExceptionFilterAttribute
         var details = new ProblemDetails()
         {
             Status = StatusCodes.Status404NotFound,
-            Title = "No se encontró el recurso especificado.",
+            Title = "Resource not found.",
             Detail = exception.Message
         };
 
@@ -123,7 +123,7 @@ public class ApiExceptionFilterAttribute : ExceptionFilterAttribute
         var details = new ProblemDetails
         {
             Status = StatusCodes.Status401Unauthorized,
-            Title = "No autorizado",
+            Title = "Unauthorized",
             Type = "https://tools.ietf.org/html/rfc7235#section-3.1"
         };
 
@@ -140,7 +140,7 @@ public class ApiExceptionFilterAttribute : ExceptionFilterAttribute
         var details = new ProblemDetails
         {
             Status = StatusCodes.Status403Forbidden,
-            Title = "Prohibido",
+            Title = "Forbidden",
             Type = "https://tools.ietf.org/html/rfc7231#section-6.5.3"
         };
 
@@ -157,7 +157,7 @@ public class ApiExceptionFilterAttribute : ExceptionFilterAttribute
         var details = new ProblemDetails
         {
             Status = StatusCodes.Status500InternalServerError,
-            Title = "Ocurrió un error procesando su solicitud.",
+            Title = "An error occurred processing your request.",
             Type = "https://tools.ietf.org/html/rfc7231#section-6.6.1"
         };
 

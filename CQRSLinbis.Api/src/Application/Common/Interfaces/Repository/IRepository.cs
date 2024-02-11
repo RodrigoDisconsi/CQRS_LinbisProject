@@ -6,6 +6,7 @@ namespace CQRSLinbis.Application.Common.Interfaces.Repository
 {
     public interface IRepository<T>
     {
+        Task<T?> GetByIdAsync(int id);
         Task<T> GetByIdAsync(int id, Expression<Func<T, object>> include);
         Task<IEnumerable<T>> GetAllAsync();
         Task AddAsync(T entity);

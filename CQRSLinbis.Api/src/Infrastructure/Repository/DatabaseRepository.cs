@@ -1,13 +1,14 @@
 ﻿using CQRSLinbis.Application.Common.Base;
 using CQRSLinbis.Application.Common.Interfaces.Repository;
 using CQRSLinbis.Application.Common.Models;
+using CQRSLinbis.Domain.Entities;
 using CQRSLinbis.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
 namespace CQRSLinbis.Infrastructure.Repository
 {
-    public class DatabaseRepository<T> : IRepository<T> where T: class
+    public class DatabaseRepository<T> : IRepository<T> where T: class, IEntity
     {
         private readonly ApplicationDbContext _context;
         private readonly DbSet<T> _dbSet;
@@ -17,13 +18,23 @@ namespace CQRSLinbis.Infrastructure.Repository
             _context = context;
             _dbSet = _context.Set<T>();
         }
-
-        public async Task<T> GetByIdAsync(int id, Expression<Func<T, object>> include)
+        public async Task<T?> GetByIdAsync(int id)
         {
-            var query = _dbSet;
-            if (include != null) query.Include(include);
-            return await query.FindAsync(id);
+            return await _dbSet.FindAsync(id);
         }
+
+        public async Task<T?> GetByIdAsync(int id, Expression<Func<T, object>> include)
+        {
+            var query = _dbSet.AsQueryable();
+
+            if (include != null)
+            {
+                query = query.Include(include);
+            }
+
+            return await query.FirstOrDefaultAsync(e => e.Id == id);
+        }
+
 
         public async Task<IEnumerable<T>> GetAllAsync()
         {

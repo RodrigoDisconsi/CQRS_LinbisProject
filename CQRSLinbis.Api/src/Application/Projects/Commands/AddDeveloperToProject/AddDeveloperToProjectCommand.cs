@@ -1,12 +1,10 @@
 ﻿using CQRSLinbis.Application.Common.Interfaces.Services;
 using MediatR;
-using System.Text.Json.Serialization;
 
 namespace CQRSLinbis.Application.Projects.Commands.AddDeveloperToProject
 {
     public class AddDeveloperToProjectCommand : IRequest
     {
-        [JsonIgnore]
         public int ProjectId { get; set; }
         public int DeveloperId { get; set; }
         public string Name { get; set; }

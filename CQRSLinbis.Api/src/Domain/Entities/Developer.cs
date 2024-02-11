@@ -2,7 +2,7 @@
 
 namespace CQRSLinbis.Domain.Entities
 {
-    public class Developer : HasDomainEvent
+    public class Developer : HasDomainEvent, IEntity
     {
         public int Id { get; set; }
         public string Name { get; set; }

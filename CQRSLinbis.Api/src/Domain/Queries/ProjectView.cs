@@ -9,6 +9,7 @@ namespace CQRSLinbis.Domain.Queries
         public string Name { get; set; }
         public bool IsActive { get; set; }
         public int EffortRequiredInDays { get; set; }
+        public DateTimeOffset AddedDate { get; set; }
         public List<DeveloperView> Developers { get; set; }
     }
 }

@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
 using CQRSLinbis.Application.Common.Base;
 using CQRSLinbis.Application.Common.Interfaces.Services;
-using CQRSLinbis.Application.Projects.Queries.Response;
+using CQRSLinbis.Application.Projects.Queries.GetProjects.Response;
+using CQRSLinbis.Application.Projects.Queries.Models;
 using MediatR;
 
 namespace CQRSLinbis.Application.Projects.Queries.GetProjects

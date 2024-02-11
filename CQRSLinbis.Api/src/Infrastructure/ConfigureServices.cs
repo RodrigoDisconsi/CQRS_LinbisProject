@@ -40,6 +40,7 @@ public static class ConfigureServices
         services.AddTransient<IIdentityService, IdentityService>();
 
         services.AddTransient<IProjectService, ProjectService>();
+        services.AddTransient<IDeveloperService, DeveloperService>();
 
 
         //services.AddIdentityServer()
