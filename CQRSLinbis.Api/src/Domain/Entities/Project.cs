@@ -10,5 +10,10 @@ namespace CQRSLinbis.Domain.Entities
         public int EffortRequiredInDays { get; set; }
         public DateTimeOffset AddedDate { get; set; }
         public virtual ICollection<Developer> Developers { get; set;}
+
+        public Project() 
+        {
+            Developers = new List<Developer>();
+        }
     }
 }

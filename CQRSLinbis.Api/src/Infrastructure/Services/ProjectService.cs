@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
+using CQRSLinbis.Application.Common.Exceptions;
 using CQRSLinbis.Application.Common.Interfaces.Repository;
 using CQRSLinbis.Application.Common.Interfaces.Services;
 using CQRSLinbis.Application.Common.Models;
+using CQRSLinbis.Application.Projects.Commands.AddDeveloperToProject;
 using CQRSLinbis.Application.Projects.Queries.GetProjects;
 using CQRSLinbis.Domain.Entities;
 using CQRSLinbis.Domain.Queries;
@@ -45,12 +47,28 @@ namespace CQRSLinbis.Infrastructure.Services
                           include: p => p.Developers,
                           pager: query);
         }
+
+        public async Task AddDeveloperToProjectAsync(AddDeveloperToProjectCommand request)
+        {
+            var project = await _projectRepository.GetByIdAsync(request.ProjectId, include: p => p.Developers);
+            if (project == null) throw new NotFoundException($"Project with id {request.ProjectId} not found.");
+
+            var developer = _mapper.Map<Developer>(request);
+
+            if (developer.Id != 0 && project.Developers.Any(p => p.Id == developer.Id)) return;
+            project.Developers.Add(developer);
+
+            await _projectRepository.UpdateAsync(project);
+        }
         private MapperConfiguration InitMapperConfigurator()
         {
             return
                 new MapperConfiguration(cfg =>
                 {
-                    cfg.CreateMap<DeveloperView, Developer>();
+                    cfg.CreateMap<Developer, DeveloperView>()
+                    .ForMember(dst => dst.DeveloperId, opt => opt.MapFrom(x => x.Id));
+
+                    cfg.CreateMap<AddDeveloperToProjectCommand, Developer>();
                 });
 
         }

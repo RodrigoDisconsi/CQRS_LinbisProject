@@ -18,9 +18,11 @@ namespace CQRSLinbis.Infrastructure.Repository
             _dbSet = _context.Set<T>();
         }
 
-        public async Task<T> GetByIdAsync(int id)
+        public async Task<T> GetByIdAsync(int id, Expression<Func<T, object>> include)
         {
-            return await _dbSet.FindAsync(id);
+            var query = _dbSet;
+            if (include != null) query.Include(include);
+            return await query.FindAsync(id);
         }
 
         public async Task<IEnumerable<T>> GetAllAsync()

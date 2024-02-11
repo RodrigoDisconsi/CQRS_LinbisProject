@@ -11,22 +11,16 @@ namespace CQRSLinbis.Application.Projects.Queries.Response
         public string Name { get; set; }
         public bool IsActive { get; set; }
         public int EffortRequiredInDays { get; set; }
-        //public void Mapping(Profile profile)
-        //{
-        //    profile.CreateMap<PermissionView, PermissionDto>()
-        //           .ForMember(dst => dst.TipoPermiso, opt => opt.MapFrom(x => new PermissionTypeDto { TipoPermisoId = x.TipoPermisoId, Descripcion = x.Descripcion }));
-
-        //    profile.CreateMap<PermissionDto, Permiso>()
-        //            .ForMember(dst => dst.Id, opt => opt.MapFrom(x => x.PermisoId))
-        //            .ForMember(dst => dst.TipoPermisoId, opt => opt.MapFrom(x => x.TipoPermiso.TipoPermisoId))
-        //            .ForMember(dst => dst.TipoPermiso, opt => opt.MapFrom(x => new TipoPermiso { Id = x.TipoPermiso.TipoPermisoId, Descripcion = x.TipoPermiso.Descripcion }));
-        //}
+        public IEnumerable<DeveloperDto> Developers { get; set; }
     }
 
-    //public class PermissionTypeDto
-    //{
-    //    public int TipoPermisoId { get; set; }
-    //    public string Descripcion { get; set; }
-    //}
+    public class DeveloperDto : IMapFrom<DeveloperView>
+    {
+        public int DeveloperId { get; set; }
+        public string Name { get; set; }
+        public int ProjectId { get; set; }
+        public int CostByDay { get; set; }
+        public DateTimeOffset AddedDate { get; set; }
+    }
 
 }

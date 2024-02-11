@@ -108,7 +108,7 @@ public class ApiExceptionFilterAttribute : ExceptionFilterAttribute
 
         var details = new ProblemDetails()
         {
-            Type = "https://tools.ietf.org/html/rfc7231#section-6.5.4",
+            Status = StatusCodes.Status404NotFound,
             Title = "No se encontró el recurso especificado.",
             Detail = exception.Message
         };
