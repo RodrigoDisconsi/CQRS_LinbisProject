@@ -11,13 +11,16 @@ namespace CQRSLinbis.Application.Projects.Queries.Models
         public bool IsActive { get; set; }
         public int EffortRequiredInDays { get; set; }
         public int DevelopmentCost { get; set; }
+        public long AddedDate { get; set; }
         public IEnumerable<DeveloperDto> Developers { get; set; }
 
         public void Mapping(Profile profile)
         {
             profile.CreateMap<ProjectView, ProjectDto>()
                    .ForMember(dst => dst.DevelopmentCost, 
-                              opt => opt.MapFrom(x => x.Developers.Sum(d => d.CostByDay) * x.EffortRequiredInDays));
+                              opt => opt.MapFrom(x => x.Developers.Sum(d => d.CostByDay) * x.EffortRequiredInDays))
+                   .ForMember(dst => dst.AddedDate,
+                              opt => opt.MapFrom(x => x.AddedDate.ToUnixTimeMilliseconds()));
         }
     }
 

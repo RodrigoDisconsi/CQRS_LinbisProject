@@ -10,7 +10,7 @@ namespace CQRSLinbis.Application.Projects.Commands.AddDeveloperToProject
                 .NotEmpty()
                 .WithMessage("ProjectId is required.");
 
-            When(x => x.DeveloperId > 0, () =>
+            When(x => x.DeveloperId == 0, () =>
             {
                 RuleFor(v => v.Name).NotEmpty().WithMessage("Name is required");
                 RuleFor(v => v.CostByDay).NotEmpty().WithMessage("CostByDay is required.");

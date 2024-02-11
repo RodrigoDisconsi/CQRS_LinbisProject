@@ -5,7 +5,6 @@ namespace CQRSLinbis.Domain.Queries
     public class ProjectView
     {
         public int ProjectId { get; set; }
-        [Buscador]
         public string Name { get; set; }
         public bool IsActive { get; set; }
         public int EffortRequiredInDays { get; set; }

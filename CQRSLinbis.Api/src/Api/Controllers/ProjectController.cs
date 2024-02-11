@@ -36,7 +36,7 @@ namespace API.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<ActionResult<Unit>> AddDeveloperToProject(int projectId, AddDeveloperToProjectCommand command)
         {
-            if (projectId != command.ProjectId) return BadRequest();
+            command.ProjectId = projectId;
 
             await Mediator.Send(command);
 

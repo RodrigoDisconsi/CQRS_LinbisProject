@@ -117,10 +117,12 @@ namespace CQRSLinbis.Infrastructure.Services
 
                     cfg.CreateMap<Project, ProjectView>()
                        .ForMember(dst => dst.ProjectId, opt => opt.MapFrom(x => x.Id))
-                       .ForMember(dst => dst.Developers, opt => opt.MapFrom(x => x.Developers));
+                       .ForMember(dst => dst.Developers, opt => opt.MapFrom(x => x.Developers))
+                       .ForMember(dst => dst.AddedDate, opt => opt.MapFrom(x => x.AddedDate));
 
                     cfg.CreateMap<AddDeveloperToProjectCommand, Developer>()
-                    .ForMember(dst => dst.Id, opt => opt.MapFrom(x => x.DeveloperId));
+                    .ForMember(dst => dst.Id, opt => opt.MapFrom(x => x.DeveloperId))
+                    .ForMember(dst => dst.AddedDate, opt => opt.MapFrom(x => DateTimeOffset.FromUnixTimeMilliseconds(x.AddedDate)));
                 });
 
         }
