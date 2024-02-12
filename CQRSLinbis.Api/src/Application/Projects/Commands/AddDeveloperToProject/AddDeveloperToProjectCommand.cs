@@ -8,11 +8,11 @@ namespace CQRSLinbis.Application.Projects.Commands.AddDeveloperToProject
     {
         [JsonIgnore]
         public int ProjectId { get; set; }
-        public int DeveloperId { get; set; }
+        public int DeveloperId { get; set; } = 0;
         public string Name { get; set; }
-        public bool IsActive { get; set; }
-        public int CostByDay { get; set; }
-        public long AddedDate { get; set; }
+        public bool IsActive { get; set; } = false;
+        public int CostByDay { get; set; } = 0;
+        public long AddedDate { get; set; } = 0;
     }
 
     public class AddDeveloperToProjectCommandHandler : IRequestHandler<AddDeveloperToProjectCommand>

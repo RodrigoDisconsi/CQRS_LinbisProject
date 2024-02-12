@@ -1,7 +1,5 @@
 using API;
 using CQRSLinbis.Application;
-using CQRSLinbis.Infrastructure.Persistence;
-using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,28 +12,12 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-//if (app.Environment.IsDevelopment())
-//{
-//}
-
 app.UseSwagger();
 app.UseSwaggerUI();
 app.UseHttpsRedirection();
 
-//app.UseAuthentication();
-//app.UseIdentityServer();
-//app.UseAuthorization();
 app.UseCors("AllowSpecificOrigins");
 
 app.MapControllers();
-
-//using (var scope = app.Services.CreateScope())
-//{
-//    var services = scope.ServiceProvider;
-//    var dbContext = services.GetRequiredService<ApplicationDbContext>();
-    
-//    dbContext.Database.Migrate();
-//}
 
 app.Run();

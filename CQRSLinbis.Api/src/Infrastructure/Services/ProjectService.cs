@@ -38,6 +38,14 @@ namespace CQRSLinbis.Infrastructure.Services
             return _mapper.Map<ProjectView>(project);
         }
 
+        public async Task<Project> GetProjectById(int projectId)
+        {
+            var project = await _projectRepository.GetByIdAsync(projectId);
+            if (project == null) throw new NotFoundException($"Project with id {projectId} not found.");
+
+            return project;
+        }
+
         public async Task<PaginatedList<ProjectView>> GetProjects(GetProjectsQuery query)
         {
             Expression<Func<Project, bool>> filter = null;
@@ -117,14 +125,12 @@ namespace CQRSLinbis.Infrastructure.Services
 
                     cfg.CreateMap<Project, ProjectView>()
                        .ForMember(dst => dst.ProjectId, opt => opt.MapFrom(x => x.Id))
-                       .ForMember(dst => dst.Developers, opt => opt.MapFrom(x => x.Developers))
-                       .ForMember(dst => dst.AddedDate, opt => opt.MapFrom(x => x.AddedDate));
+                       .ForMember(dst => dst.Developers, opt => opt.MapFrom(x => x.Developers));
 
                     cfg.CreateMap<AddDeveloperToProjectCommand, Developer>()
                     .ForMember(dst => dst.Id, opt => opt.MapFrom(x => x.DeveloperId))
                     .ForMember(dst => dst.AddedDate, opt => opt.MapFrom(x => DateTimeOffset.FromUnixTimeMilliseconds(x.AddedDate)));
                 });
-
         }
     }
 }

@@ -3,7 +3,6 @@ using CQRSLinbis.Application.Common.Interfaces;
 using System.Reflection;
 using MediatR;
 using CQRSLinbis.Domain.Entities;
-using CQRSLinbis.Application.Common.Models;
 
 namespace CQRSLinbis.Infrastructure.Persistence;
 public class ApplicationDbContext : DbContext, IApplicationDbContext

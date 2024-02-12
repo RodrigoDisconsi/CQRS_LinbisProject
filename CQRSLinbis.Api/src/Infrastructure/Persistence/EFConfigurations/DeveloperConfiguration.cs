@@ -20,7 +20,7 @@ namespace CQRSLinbis.Infrastructure.Persistence.EFConfigurations
             builder.HasOne(c => c.Project)
                 .WithMany(t => t.Developers)
                 .HasForeignKey(c => c.ProjectId)
-                .OnDelete(DeleteBehavior.ClientSetNull);
+                .OnDelete(DeleteBehavior.SetNull);
         }
     }
 
