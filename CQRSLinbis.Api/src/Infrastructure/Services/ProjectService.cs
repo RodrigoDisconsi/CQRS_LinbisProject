@@ -7,6 +7,7 @@ using CQRSLinbis.Application.Projects.Commands.AddDeveloperToProject;
 using CQRSLinbis.Application.Projects.Queries.GetProjectById;
 using CQRSLinbis.Application.Projects.Queries.GetProjects;
 using CQRSLinbis.Domain.Entities;
+using CQRSLinbis.Domain.Events;
 using CQRSLinbis.Domain.Queries;
 using Microsoft.Extensions.Logging;
 using System.Linq.Expressions;
@@ -80,6 +81,7 @@ namespace CQRSLinbis.Infrastructure.Services
                     return;
                 }
                 project.Developers.Add(developer);
+                project.AddDomainEvent(new AddDeveloperToProjectEvent());
 
                 await _projectRepository.UpdateAsync(project);
 
@@ -100,6 +102,7 @@ namespace CQRSLinbis.Infrastructure.Services
                 var project = await _projectRepository.GetByIdAsync(projectId, include: p => p.Developers);
                 if (project == null) throw new NotFoundException($"Project with id {projectId} not found.");
 
+                project.AddDomainEvent(new DeleteProjectEvent());
                 await _projectRepository.DeleteAsync(project);
                 _logger.LogError("Project deleted correctly...");
             }
