@@ -19,7 +19,7 @@ namespace CQRSLinbis.Application.Projects.Queries.Models
         {
             profile.CreateMap<ProjectView, ProjectDto>()
                    .ForMember(dst => dst.DevelopmentCost, 
-                              opt => opt.MapFrom(x => x.Developers.Sum(d => d.CostByDay) * x.EffortRequiredInDays))
+                              opt => opt.MapFrom(x => x.Developers.Sum(d => d.CostByDay * x.EffortRequiredInDays)))
                    .ForMember(dst => dst.AddedDate,
                               opt => opt.MapFrom(x => x.AddedDate.ToUnixTimeMilliseconds()));
         }

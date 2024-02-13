@@ -2,10 +2,14 @@
 using CQRSLinbis.Application.Common.Exceptions;
 using CQRSLinbis.Application.Common.Interfaces.Repository;
 using CQRSLinbis.Application.Common.Interfaces.Services;
+using CQRSLinbis.Application.Common.Models;
 using CQRSLinbis.Application.Developers.Commands.CreateDeveloper;
+using CQRSLinbis.Application.Developers.Queries.GetDeveloperById;
 using CQRSLinbis.Domain.Entities;
 using CQRSLinbis.Domain.Queries;
 using Microsoft.Extensions.Logging;
+using System.Linq.Expressions;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace CQRSLinbis.Infrastructure.Services
 {
@@ -31,11 +35,20 @@ namespace CQRSLinbis.Infrastructure.Services
             return developer;
         }
 
-        public async Task<IQueryable<DeveloperView>> GetDevelopers()
+        public async Task<PaginatedList<DeveloperView>> GetDevelopers(GetDevelopersQuery query)
         {
-            var developers = await _developerRepository.GetAllAsync();
+            Expression<Func<Developer, bool>> filter = null;
 
-            return _mapper.ProjectTo<DeveloperView>(developers.AsQueryable());
+            if (!String.IsNullOrEmpty(query.TextoBusqueda))
+            {
+                filter = p => p.Name.Contains(query.TextoBusqueda);
+            }
+
+            return await _developerRepository.GetPaginatedListAsync(
+                         filter: filter,
+                         selector: p => _mapper.Map<DeveloperView>(p),
+                         include: null,
+                         pager: query);
         }
 
         public async Task CreateDeveloper(CreateDeveloperCommand developer)

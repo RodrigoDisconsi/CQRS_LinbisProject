@@ -31,6 +31,10 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
             new Project() { Id = 1, Name = "Project 1", IsActive = true, EffortRequiredInDays = 30, AddedDate = DateTimeOffset.UtcNow },
             new Project() { Id = 2, Name = "Project 2", IsActive = true, EffortRequiredInDays = 60, AddedDate = DateTimeOffset.UtcNow }
             );
+        builder.Entity<Developer>().HasData(
+            new Developer() { Id = 1, Name = "Developer 1", CostByDay = 60, ProjectId = 1, AddedDate = DateTimeOffset.UtcNow },
+            new Developer() { Id = 2, Name = "Developer 2", CostByDay = 30, ProjectId = 1, AddedDate = DateTimeOffset.UtcNow }
+            );
 
         base.OnModelCreating(builder);
     }

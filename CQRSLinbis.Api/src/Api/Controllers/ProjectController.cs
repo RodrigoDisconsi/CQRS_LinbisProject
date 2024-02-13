@@ -27,7 +27,9 @@ namespace API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(GetProjectByIdResponse))]
         public async Task<ActionResult<GetProjectByIdResponse>> GetProjectById(int projectId)
         {
-            return await Mediator.Send(new GetProjectByIdQuery { ProjectId = projectId });
+            var response = await Mediator.Send(new GetProjectByIdQuery { ProjectId = projectId });
+
+            return Ok(response.Project);
         }
 
         [HttpPost("{projectId}/developers")]
@@ -40,7 +42,7 @@ namespace API.Controllers
 
             await Mediator.Send(command);
 
-            return NoContent();
+            return new ObjectResult("Ok.") { StatusCode = StatusCodes.Status201Created };
         }
 
         [HttpDelete("{projectId}")]

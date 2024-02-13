@@ -3,11 +3,13 @@ using CQRSLinbis.Application.Common.Interfaces.Services;
 using MediatR;
 using CQRSLinbis.Application.Developers.Queries.Models;
 using CQRSLinbis.Application.Developers.Queries.GetDevelopers.Response;
+using CQRSLinbis.Application.Common.Base;
 
 namespace CQRSLinbis.Application.Developers.Queries.GetDeveloperById
 {
-    public class GetDevelopersQuery : IRequest<GetDevelopersResponse>
+    public class GetDevelopersQuery : PagerBase, IRequest<GetDevelopersResponse>
     {
+        public string TextoBusqueda { get; set; }
     }
 
     public class GetDevelopersQueryHandler : IRequestHandler<GetDevelopersQuery, GetDevelopersResponse>
@@ -24,7 +26,7 @@ namespace CQRSLinbis.Application.Developers.Queries.GetDeveloperById
         {
             var response = new GetDevelopersResponse
             {
-                Developers = _mapper.ProjectTo<DeveloperDto>(await _developerService.GetDevelopers()).ToList(),
+                Developers = (await _developerService.GetDevelopers(request)).Map<DeveloperDto>(_mapper.ConfigurationProvider),
             };
 
             return await Task.FromResult(response);
