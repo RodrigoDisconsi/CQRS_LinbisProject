@@ -8,7 +8,7 @@ public static class SercheableExtensions
     public static Expression<Func<TEntity, bool>>? BuildSearchPredicate<TEntity>(string searchString)
     {
         List<PropertyInfo> properties = typeof(TEntity).GetTypeInfo().DeclaredProperties
-            .Where(p => p.GetCustomAttribute(typeof(BuscadorAttribute)) != null)
+            .Where(p => p.GetCustomAttribute(typeof(SearchableAttribute)) != null)
             .ToList();
 
         if (properties.Count == 0)

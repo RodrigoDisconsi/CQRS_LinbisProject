@@ -40,9 +40,9 @@ namespace CQRSLinbis.Infrastructure.Services
         {
             Expression<Func<Developer, bool>> filter = null;
 
-            if (!String.IsNullOrEmpty(query.TextoBusqueda))
+            if (!String.IsNullOrEmpty(query.SearchText))
             {
-                filter = SercheableExtensions.BuildSearchPredicate<Developer>(query.TextoBusqueda);
+                filter = SercheableExtensions.BuildSearchPredicate<Developer>(query.SearchText);
             }
 
             return await _developerRepository.GetPaginatedListAsync(

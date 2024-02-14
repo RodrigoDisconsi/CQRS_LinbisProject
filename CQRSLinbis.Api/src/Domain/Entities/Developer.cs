@@ -6,7 +6,7 @@ namespace CQRSLinbis.Domain.Entities
     public class Developer : HasDomainEvent, IEntity
     {
         public int Id { get; set; }
-        [Buscador]
+        [Searchable]
         public string Name { get; set; }
         public int? ProjectId { get; set; }
         public int CostByDay { get; set; }
