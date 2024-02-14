@@ -7,6 +7,7 @@ using CQRSLinbis.Application.Developers.Commands.CreateDeveloper;
 using CQRSLinbis.Application.Developers.Queries.GetDeveloperById;
 using CQRSLinbis.Domain.Entities;
 using CQRSLinbis.Domain.Queries;
+using CQRSLinbis.Infrastructure.Extensions;
 using Microsoft.Extensions.Logging;
 using System.Linq.Expressions;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
@@ -41,7 +42,7 @@ namespace CQRSLinbis.Infrastructure.Services
 
             if (!String.IsNullOrEmpty(query.TextoBusqueda))
             {
-                filter = p => p.Name.Contains(query.TextoBusqueda);
+                filter = SercheableExtensions.BuildSearchPredicate<Developer>(query.TextoBusqueda);
             }
 
             return await _developerRepository.GetPaginatedListAsync(

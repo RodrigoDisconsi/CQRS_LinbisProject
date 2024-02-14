@@ -9,7 +9,7 @@ namespace CQRSLinbis.Application.Projects.Queries.GetProjects
 {
     public class GetProjectsQuery : PagerBase, IRequest<GetProjectsResponse>
     {
-        public string? TextoBusqueda { get; set; }
+        public string TextoBusqueda { get; set; }
     }
 
     public class GetProjectsQueryHandler : IRequestHandler<GetProjectsQuery, GetProjectsResponse>

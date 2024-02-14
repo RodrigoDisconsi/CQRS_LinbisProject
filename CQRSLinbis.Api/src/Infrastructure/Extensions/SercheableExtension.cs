@@ -1,44 +1,38 @@
-﻿using System.Reflection;
-using System.Text;
+﻿using System.Linq.Expressions;
+using System.Reflection;
 using CQRSLinbis.Domain.Attributes;
-using CQRSLinbis.Domain.Exceptions;
 
 namespace CQRSLinbis.Infrastructure.Extensions;
 public static class SercheableExtensions
 {
-    /// <summary>
-    /// Concatena todas las propiedades del tipo objType con sintaxis sql
-    /// que permite ser incluido en una clausula where (el operador logico utilizado es "OR" si la entidad tiene mas de una propiedad)
-    /// </summary>
-    /// <param name="objType">Tipo a partir del que se obtendran todas las propiedades</param>
-    /// <param name="varBuscador">Nombre de la variable SQL a utilizar</param>
-    /// <returns>String con sintaxis sql compatible, contiene todas las propiedades del tipo especificado en objType concatenadas</returns>
-    public static string SearchCriteria(this Type objType, string varBuscador)
+    public static Expression<Func<TEntity, bool>>? BuildSearchPredicate<TEntity>(string searchString)
     {
-        ///lista con todas las propiedades del tipo objType
-        List<PropertyInfo> _properties = objType?.GetTypeInfo().DeclaredProperties.ToList();
-        if (_properties != null && _properties.Count > 0)
+        List<PropertyInfo> properties = typeof(TEntity).GetTypeInfo().DeclaredProperties
+            .Where(p => p.GetCustomAttribute(typeof(BuscadorAttribute)) != null)
+            .ToList();
+
+        if (properties.Count == 0)
+            return null;
+
+        ParameterExpression parameter = Expression.Parameter(typeof(TEntity), "p");
+        List<Expression> searchExpressions = new List<Expression>();
+
+        foreach (var property in properties)
         {
-            StringBuilder query = new StringBuilder();
-
-            List<string> strPropLike = new List<string>();
-
-            _properties.Where(p => p.GetCustomAttribute(typeof(BuscadorAttribute)) != null).ToList().ForEach(value =>
-            {
-                if (value.PropertyType.Equals(typeof(DateTime)) || value.PropertyType.Equals(typeof(DateTime?)))
-                {
-                    strPropLike.Add($" convert(varchar, {value.Name}, 3)" + " like " + varBuscador);
-                    strPropLike.Add($" [dbo].[fn_ConvertDate] ({value.Name},'spanish')" + " like " + varBuscador);
-                }
-                else
-                    strPropLike.Add(value.Name + " like " + varBuscador);
-            });
-
-            query.AppendJoin(" or ", strPropLike);
-            return query.ToString();
+            MemberExpression propertyExpression = Expression.Property(parameter, property);
+            ConstantExpression searchValue = Expression.Constant(searchString);
+            MethodInfo containsMethod = typeof(string).GetMethod("Contains", new[] { typeof(string) });
+            MethodCallExpression containsExpression = Expression.Call(propertyExpression, containsMethod, searchValue);
+            searchExpressions.Add(containsExpression);
         }
 
-        ///la siguiente excepcion se produce por falta de propiedades en la entidad del tipo especificado o porque el object Type es null
-        throw new ArgumentExpectedException("objType no es un tipo valido, null o no contiene propiedades");
+        if (searchExpressions.Any())
+        {
+            var body = searchExpressions.Aggregate(Expression.OrElse);
+            return Expression.Lambda<Func<TEntity, bool>>(body, parameter);
+        }
+
+        return null;
     }
+
 }

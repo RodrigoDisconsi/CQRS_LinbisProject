@@ -1,10 +1,12 @@
-﻿using CQRSLinbis.Domain.Common;
+﻿using CQRSLinbis.Domain.Attributes;
+using CQRSLinbis.Domain.Common;
 
 namespace CQRSLinbis.Domain.Entities
 {
     public class Project : HasDomainEvent, IEntity
     {
         public int Id { get; set; }
+        [Buscador]
         public string Name { get; set; }
         public bool IsActive { get; set; }
         public int EffortRequiredInDays { get; set; }

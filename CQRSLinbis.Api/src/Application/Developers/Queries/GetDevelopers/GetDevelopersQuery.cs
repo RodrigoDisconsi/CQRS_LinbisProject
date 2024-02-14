@@ -9,7 +9,7 @@ namespace CQRSLinbis.Application.Developers.Queries.GetDeveloperById
 {
     public class GetDevelopersQuery : PagerBase, IRequest<GetDevelopersResponse>
     {
-        public string TextoBusqueda { get; set; }
+        public string? TextoBusqueda { get; set; }
     }
 
     public class GetDevelopersQueryHandler : IRequestHandler<GetDevelopersQuery, GetDevelopersResponse>

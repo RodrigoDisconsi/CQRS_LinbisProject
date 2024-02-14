@@ -42,7 +42,7 @@ namespace API.Controllers
 
             await Mediator.Send(command);
 
-            return new ObjectResult("Ok.") { StatusCode = StatusCodes.Status201Created };
+            return new ObjectResult(String.Empty) { StatusCode = StatusCodes.Status201Created };
         }
 
         [HttpDelete("{projectId}")]

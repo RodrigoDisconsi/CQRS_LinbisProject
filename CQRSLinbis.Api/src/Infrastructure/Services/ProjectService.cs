@@ -9,6 +9,8 @@ using CQRSLinbis.Application.Projects.Queries.GetProjects;
 using CQRSLinbis.Domain.Entities;
 using CQRSLinbis.Domain.Events;
 using CQRSLinbis.Domain.Queries;
+using CQRSLinbis.Infrastructure.Extensions;
+using IdentityModel;
 using Microsoft.Extensions.Logging;
 using System.Linq.Expressions;
 
@@ -53,7 +55,7 @@ namespace CQRSLinbis.Infrastructure.Services
 
             if (!String.IsNullOrEmpty(query.TextoBusqueda))
             {
-                filter = p => p.Name.Contains(query.TextoBusqueda);
+                filter = SercheableExtensions.BuildSearchPredicate<Project>(query.TextoBusqueda);
             }
 
             return await _projectRepository.GetPaginatedListAsync(
